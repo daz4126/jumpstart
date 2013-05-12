@@ -1,0 +1,32 @@
+doctype html
+html lang="en"
+head
+  title== @title || "Songs By Sinatra"
+  meta charset="utf-8"
+  == css :styles
+  link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection" rel="stylesheet"
+  script src="http://code.jquery.com/jquery-1.8.2.min.js"
+  script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"
+  script src="/javascripts/application.js"
+body
+  header
+    h1 Songs By Sinatra
+    nav
+      ul
+        li
+          a href=="/" title="Home" class==current? Home
+        li 
+          a href=="/about" class==current?("/about") title="About" About
+        li
+          a href=="/contact" class==current?("/contact") title="Contact"Contact
+        li
+          a href=="/songs" class==current?("/songs") title="Songs" Songs
+  section class="main content"
+    == styled_flash
+    == yield
+footer
+  - if authorized?
+    a href="/logout" log out
+  - else
+    a href="/login" log in
+
